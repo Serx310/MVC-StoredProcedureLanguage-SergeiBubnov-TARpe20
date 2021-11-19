@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DynamicSQL</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body style="padding-top: 10px">
+    <div class="col-xs-8 col-xs-offset-2">
+        <div class="panel-heading">
+            <h3>Language Search Form</h3>
+        </div>
+        <form asp-controller="Language" asp-action="DynamicSQL">
+            <div>
+                <label for="name">Name of the language</label>
+                <br />
+                <input type="text" name="name" placeholder="Name of the Language" />
+            </div>
+            <br />
+            <div>
+                <label for="family">Language family</label>
+                <br />
+                <input type="text" name="family" placeholder="Language family" />
+            </div>
+            <br />
+            <div>
+                <label for="mainAreal">Native to(Country)</label>
+                <br />
+                <input type="text" name="mainAreal" placeholder="Native to" />
+            </div>
+            <br />
+            <div>
+                <label for="speakers">Number of speakers</label>
+                <br />
+                <input type="number" name="speakers" placeholder="Number of Speakers" />
+            </div>
+            <br />
+            <input type="submit" value="DynamicSQL" />
+        </form>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Family</th>
+                    <th scope="col">Native to</th>
+                    <th scope="col">Number of Speakers</th>
+                </tr>
+            <tbody>
+                @foreach (var language in Model)
+                {
+                    <tr>
+                        <td>@language.Name</td>
+                        <td>@language.Family</td>
+                        <td>@language.MainAreal</td>
+                        <td>@language.Speakers</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
